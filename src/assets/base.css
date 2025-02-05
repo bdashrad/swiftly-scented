@@ -1,0 +1,61 @@
+:root {
+  --vt-c-white: #ffffff;
+  --vt-c-black: #000000;
+  --vt-c-light-yellow: #fff0c0;
+  --vt-c-light-peach: #fdd2c5;
+  --vt-c-light-pink: #eaadd6;
+  --vt-c-light-purple: #c7b6e2;
+  --vt-c-light-blue: #94bfe9;
+
+  --color-background: var(--vt-c-light-pink); /* Light yellow background */
+  --color-text: var(--vt-c-black); /* Black text */
+  --color-border: rgba(60, 60, 60, 0.29);
+  --color-heading: var(--vt-c-black);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--color-text);
+  background: var(--color-background);
+  line-height: 1.6;
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--color-heading);
+}
+
+button {
+  background-color: var(--vt-c-light-purple);
+  color: var(--vt-c-white);
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 12px; /* Rounded border */
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--vt-c-light-blue);
+}
+
+a {
+  color: var(--vt-c-light-blue);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #82b1ff; /* Slightly darker blue */
+}
