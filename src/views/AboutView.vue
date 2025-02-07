@@ -15,7 +15,7 @@
     min-height: 100vh;
     display: flex;
     align-items: center;
-/*    flex-direction: column;
+    /*    flex-direction: column;
     justify-content: center;
     text-align: center;
     padding: 20px; */
