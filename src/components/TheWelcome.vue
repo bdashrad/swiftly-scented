@@ -1,31 +1,33 @@
-<template>
-  <div class="welcome">
-    <h1>Welcome to Swiftly Scented!</h1>
-
-    <WelcomeItem>
-      <p>
-        Can you guess whether the following phrases are Taylor Swift songs or Bath and Body Works
-        scents?
-      </p>
-    </WelcomeItem>
-
-    <router-link to="/game">
-      <button>Let's Go!</button>
-    </router-link>
-  </div>
-</template>
-
 <script setup lang="ts">
 import WelcomeItem from './WelcomeItem.vue'
+const openReadmeInEditor = () => fetch('/__open-in-editor?file=README.md')
 </script>
+<template>
+  <WelcomeItem>
+    <template #heading>Welcome to Swiftly Scented!</template>
 
-<style scoped>
-.welcome {
-  text-align: center;
-  margin: 20px;
-}
+    Do you like Bath and Body Works? Love Taylor Swift? Have you been looking for a unique opportunity to showcase your knowledge of both?
+  </WelcomeItem>
 
-button {
-  margin-top: 20px;
-}
-</style>
+  <WelcomeItem>
+    <template #heading>What am I doing here?</template>
+
+    Can you guess whether the following phrases are Taylor Swift songs or Bath and Body Works
+    scents?
+  </WelcomeItem>
+
+
+  <WelcomeItem>
+    <template #heading>Why did you build this?</template>
+
+    I wanted to play with generative ai, using it to write something in a language I didn't know.
+  </WelcomeItem>
+
+  <WelcomeItem>
+    <template #heading>Can I just play the game?</template>
+
+    <RouterLink to="/game">
+      <button>Yes! Click here!</button>
+    </RouterLink>
+  </WelcomeItem>
+</template>

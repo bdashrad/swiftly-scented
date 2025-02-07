@@ -11,9 +11,12 @@
 
 <style scoped>
 .item {
-  margin-top: 2rem;
+  margin: 2rem;
   display: flex;
   position: relative;
+  background-color: var(--vt-c-light-blue);
+  padding: 1rem;
+  border-radius: 10px;
 }
 
 .details {
@@ -35,7 +38,7 @@ h3 {
   font-size: 1.2rem;
   font-weight: 500;
   margin-bottom: 0.4rem;
-  color: var(--color-heading);
+  color: var(--vt-c-light-peach);
 }
 
 @media (min-width: 1024px) {

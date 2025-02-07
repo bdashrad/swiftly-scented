@@ -8,7 +8,7 @@
 }
 
 a,
-.green {
+.blue {
   text-decoration: none;
   color: var(--vt-c-light-blue);
   transition: 0.4s;
@@ -17,7 +17,7 @@ a,
 
 @media (hover: hover) {
   a:hover {
-    background-color: rgba(148, 191, 233, 0.2); /* Light blue hover effect */
+    background-color: var(--vt-c-light-blue); /* Light blue hover effect */
   }
 }
 
