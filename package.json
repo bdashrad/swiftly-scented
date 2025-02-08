@@ -13,7 +13,8 @@
     "type-check": "vue-tsc --build",
     "lint": "eslint . --fix",
     "format": "prettier --write src/",
-    "deploy": "./scripts/deploy.sh"
+    "predeploy": "pnpm build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "pinia": "^2.3.1",
@@ -36,6 +37,7 @@
     "eslint": "^9.18.0",
     "eslint-plugin-vue": "^9.32.0",
     "geckodriver": "^5.0.0",
+    "gh-pages": "^6.3.0",
     "jiti": "^2.4.2",
     "jsdom": "^26.0.0",
     "nightwatch": "^3.11.0",
