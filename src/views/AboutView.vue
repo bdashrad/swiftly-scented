@@ -4,7 +4,7 @@ import WelcomeItem from '../components/WelcomeItem.vue'
 <template>
   <div class="about">
     <WelcomeItem>
-      <template #heading>About Swiftly Scented</template>
+      <template #heading>About Taylor Scents</template>
 
       Swiftly Scented is a fun and interactive project that challenges you to guess whether a phrase
       is a Taylor Swift song or a Bath and Body Works scent.
