@@ -116,7 +116,7 @@ export const phrases = {
     'Breathe Deep',
     'Bright Christmas Morning',
     'Bubble Gum Pop',
-    'Buttercups &n Bellinis',
+    'Buttercups & Bellinis',
     'Calming Waters',
     'Carried Away',
     'Cashmere Glow',
