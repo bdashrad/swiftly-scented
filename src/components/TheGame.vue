@@ -10,7 +10,7 @@
       <button @click="vote('taylorSwiftSong')">Taylor Swift Song</button>
       <button @click="vote('bathAndBodyWorksScent')">Bath and Body Works Scent</button>
 
-    <p v-if="result !== null">{{ result }}</p>
+      <p v-if="result !== null">{{ result }}</p>
     </div>
 
     <div class="score-box">

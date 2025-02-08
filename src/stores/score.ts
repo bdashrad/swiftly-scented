@@ -5,7 +5,7 @@ export const useScoreStore = defineStore('score', () => {
   const countAttempts = ref(0)
   const countCorrect = ref(0)
   const percentCorrect = computed(() =>
-    countAttempts.value === 0 ? 0 : (countCorrect.value * 100 / countAttempts.value)
+    countAttempts.value === 0 ? 0 : (countCorrect.value * 100) / countAttempts.value,
   )
 
   function incrementAttempts() {
