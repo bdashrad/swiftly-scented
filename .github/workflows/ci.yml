@@ -39,10 +39,3 @@ jobs:
 
       # - name: E2E Test
       #   run: pnpm test:e2e
-
-      - name: Deploy with gh-pages
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          pnpm deploy-pages -u "github-actions-bot <support+actions@github.com>"
