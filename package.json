@@ -14,7 +14,8 @@
     "lint": "eslint . --fix",
     "format": "prettier --write src/",
     "predeploy": "pnpm build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "deploy-pages": "pnpm run deploy"
   },
   "dependencies": {
     "pinia": "^2.3.1",
