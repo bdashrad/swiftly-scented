@@ -23,7 +23,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import { phrases } from '../data/phrases'
-import { useScoreStore } from '@/stores/score'
+import { useScoreStore } from '../stores/score'
 
 export default defineComponent({
   name: 'GameComponent',
