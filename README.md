@@ -1,12 +1,11 @@
-# swift-and-bodyworks/swift-and-bodyworks/README.md
-
-# swift-and-bodyworks
+# swiftly-scented
 
 This project is a fun game that allows users to vote on whether a given phrase is the name of a Taylor Swift song or a Bath and Body Works scent.
 
 ## Project Structure
 
 - **src/**: Contains the source code for the application.
+
   - **assets/**: Contains base styles for the application.
     - `base.css`: Base styles including CSS variables for colors and layout.
   - **components/**: Contains Vue components.
@@ -19,6 +18,7 @@ This project is a fun game that allows users to vote on whether a given phrase i
   - `main.ts`: The entry point of the application that initializes the Vue app.
 
 - **public/**: Contains public assets.
+
   - `index.html`: The main HTML file that serves as the entry point for the web application.
 
 - `package.json`: Configuration file for npm, listing dependencies and scripts.
@@ -30,17 +30,20 @@ This project is a fun game that allows users to vote on whether a given phrase i
 ## Setup Instructions
 
 1. Clone the repository:
+
    ```sh
    git clone <repository-url>
    cd swift-and-bodyworks
    ```
 
 2. Install dependencies:
+
    ```sh
    pnpm install
    ```
 
 3. Run the development server:
+
    ```sh
    pnpm dev
    ```

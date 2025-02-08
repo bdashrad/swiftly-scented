@@ -1,29 +1,36 @@
 <template>
-  <div>
+  <div class="game">
     <p>
       Read each phrase and decide if it is the name of a Taylor Swift song or a Bath and Body Works
       scent.
     </p>
     <div class="phrase-box">
-      <p>"{{ currentPhrase }}"</p>
+      <h2>"{{ currentPhrase }}"</h2>
+
+      <button @click="vote('taylorSwiftSong')">Taylor Swift Song</button>
+      <button @click="vote('bathAndBodyWorksScent')">Bath and Body Works Scent</button>
+
+      <p v-if="result !== null">{{ result }}</p>
     </div>
-    <button @click="vote('taylorSwiftSong')">Taylor Swift Song</button>
-    <button @click="vote('bathAndBodyWorksScent')">Bath and Body Works Scent</button>
-    <p v-if="result !== null">{{ result }}</p>
-    <p>Score: {{ score }}</p>
+
+    <div class="score-box">
+      <p>Score: {{ parseFloat(score.percentCorrect.toFixed(2)) }}%</p>
+      <p>You've guessed {{ score.countCorrect }} out of {{ score.countAttempts }} correctly!</p>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import { phrases } from '../data/phrases'
+import { useScoreStore } from '../stores/score'
 
 export default defineComponent({
   name: 'GameComponent',
   setup() {
     const currentPhrase = ref('')
     const result = ref<string | null>(null)
-    const score = ref(0)
+    const score = useScoreStore()
 
     const getRandomPhrase = () => {
       const allPhrases = [...phrases.taylorSwiftSongs, ...phrases.bathAndBodyWorksScents]
@@ -37,10 +44,11 @@ export default defineComponent({
           phrases.bathAndBodyWorksScents.includes(currentPhrase.value))
       ) {
         result.value = 'Correct!'
-        score.value++
+        score.increment()
       } else {
         result.value = 'Incorrect!'
       }
+      score.incrementAttempts()
       currentPhrase.value = getRandomPhrase()
     }
 
@@ -57,8 +65,28 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.game {
+  text-align: center;
+  margin: 20px;
+}
+
 .phrase-box {
-  background-color: var(--vt-c-light-peach);
+  background-color: var(--vt-c-light-blue);
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--color-text);
+  text-align: center;
+}
+
+.phrase-box h2 {
+  color: var(--vt-c-white);
+}
+
+.score-box {
+  background-color: var(--vt-c-light-purple);
   padding: 20px;
   margin: 20px 0;
   border-radius: 10px;
@@ -69,14 +97,17 @@ export default defineComponent({
 }
 
 button {
+  background-color: var(--vt-c-light-pink);
   margin: 10px;
-  padding: 10px 20px;
   font-size: 16px;
-  color: var(--vt-c-white);
-  border: none;
-  border-radius: 12px; /* Rounded border */
-  cursor: pointer;
   transition: background-color 0.3s ease;
-  width: 20%;
+  width: 40%;
+  color: var(--vt-c-white);
+  text-shadow: 1px 1px 1px var(--vt-c-light-purple);
+}
+
+button:hover {
+  background-color: var(--vt-c-light-purple);
+  color: var(--vt-c-light-peach);
 }
 </style>

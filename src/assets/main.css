@@ -1,14 +1,14 @@
 @import './base.css';
 
 #app {
-  max-width: 1280px;
+  /* max-width: 1280px; */
   margin: 0 auto;
   padding: 2rem;
   font-weight: normal;
 }
 
 a,
-.green {
+.blue {
   text-decoration: none;
   color: var(--vt-c-light-blue);
   transition: 0.4s;
@@ -17,7 +17,7 @@ a,
 
 @media (hover: hover) {
   a:hover {
-    background-color: rgba(148, 191, 233, 0.2); /* Light blue hover effect */
+    background-color: var(--vt-c-light-blue); /* Light blue hover effect */
   }
 }
 
@@ -28,7 +28,7 @@ a,
   }
 
   #app {
-    display: grid;
+    /* display: grid; */
     grid-template-columns: 1fr 1fr;
     padding: 0 2rem;
   }
