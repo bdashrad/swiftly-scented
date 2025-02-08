@@ -7,7 +7,7 @@ import { RouterLink, RouterView } from 'vue-router'
     <img alt="Vue logo" class="logo" src="@/assets/logo.webp" width="125" height="125" />
 
     <div class="wrapper">
-      <h1>Swiftly Scented</h1>
+      <h1>Taylor Scents</h1>
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/game">Play</RouterLink>

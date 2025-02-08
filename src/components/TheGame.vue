@@ -7,8 +7,8 @@
     <div class="phrase-box">
       <h2>"{{ currentPhrase }}"</h2>
 
-      <button @click="vote('taylorSwiftSong')">Taylor Swift Song</button>
-      <button @click="vote('bathAndBodyWorksScent')">Bath and Body Works Scent</button>
+      <button @click="vote('taylorSwiftSong')">Song</button>
+      <button @click="vote('bathAndBodyWorksScent')">Scent</button>
 
       <p v-if="result !== null">{{ result }}</p>
     </div>
@@ -101,7 +101,7 @@ button {
   margin: 10px;
   font-size: 16px;
   transition: background-color 0.3s ease;
-  width: 40%;
+  width: 50%;
   color: var(--vt-c-white);
   text-shadow: 1px 1px 1px var(--vt-c-light-purple);
 }

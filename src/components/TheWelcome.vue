@@ -4,7 +4,7 @@ import WelcomeItem from './WelcomeItem.vue'
 <template>
   <main>
     <WelcomeItem>
-      <template #heading>Welcome to Swiftly Scented!</template>
+      <template #heading>Welcome to Taylor Scents!</template>
 
       Do you like Bath and Body Works? Love Taylor Swift? Have you been looking for a unique
       opportunity to showcase your knowledge of both?
