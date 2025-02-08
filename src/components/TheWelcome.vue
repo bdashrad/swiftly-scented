@@ -18,12 +18,6 @@ import WelcomeItem from './WelcomeItem.vue'
     </WelcomeItem>
 
     <WelcomeItem>
-      <template #heading>Why did you build this?</template>
-
-      I wanted to play with generative ai, using it to write something in a language I didn't know.
-    </WelcomeItem>
-
-    <WelcomeItem>
       <template #heading>Can I just play the game?</template>
 
       <RouterLink to="/game">
