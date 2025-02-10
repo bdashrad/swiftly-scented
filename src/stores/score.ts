@@ -16,11 +16,17 @@ export const useScoreStore = defineStore('score', () => {
     countCorrect.value++
   }
 
+  function $reset() {
+    countAttempts.value = 0
+    countCorrect.value = 0
+  }
+
   return {
     countAttempts,
     countCorrect,
     percentCorrect,
     incrementAttempts,
     increment,
+    $reset,
   }
 })

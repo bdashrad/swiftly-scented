@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import WelcomeItem from '../components/WelcomeItem.vue'
+import WelcomeItem from './WelcomeItem.vue'
 </script>
 <template>
-  <div class="about">
+  <main>
     <WelcomeItem>
       <template #heading>About Taylor Scents</template>
 
@@ -24,30 +24,29 @@ import WelcomeItem from '../components/WelcomeItem.vue'
       I wanted to play with generative ai, using it to write something in a language I didn't know well, using frameworks and libraries I had no experience with.
       I built the initial version in an evening using Github Copilot while watching TV, and have since made a few refinements.
     </WelcomeItem>
-
-    <WelcomeItem>
-      <template #heading>Learnings</template>
-
-      Generative AI has come a long way, and is very powerful. I was able to build a basic working app on a modern framework with nearly zero code, solely by requesting Copilot chat to make changes in VS Code.
-    </WelcomeItem>
-  </div>
+  </main>
 </template>
 
 <style>
-@media (min-width: 1024px) {
-  .about {
-    max-width: 730px;
-    min-height: 100vh;
-    align-items: center;
-    /*    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    padding: 20px; */
-  }
+main {
+  max-width: 730px;
+  flex-direction: column;
+  align-items: center;
 }
 
-.about p {
-  margin: 10px 0;
-  max-width: 600px;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </style>

@@ -16,6 +16,7 @@
     <div class="score-box">
       <p>Score: {{ parseFloat(score.percentCorrect.toFixed(2)) }}%</p>
       <p>You've guessed {{ score.countCorrect }} out of {{ score.countAttempts }} correctly!</p>
+      <div v-if="result !== null"><button @click="restartGame" class="restart">Reset</button></div>
     </div>
   </div>
 </template>
@@ -28,13 +29,22 @@ import { useScoreStore } from '../stores/score'
 export default defineComponent({
   name: 'GameComponent',
   setup() {
+    const allPhrases = [...phrases.taylorSwiftSongs, ...phrases.bathAndBodyWorksScents]
     const currentPhrase = ref('')
+    const usedPhrases = ref<Set<string>>(new Set())
     const result = ref<string | null>(null)
     const score = useScoreStore()
 
     const getRandomPhrase = () => {
-      const allPhrases = [...phrases.taylorSwiftSongs, ...phrases.bathAndBodyWorksScents]
-      return allPhrases[Math.floor(Math.random() * allPhrases.length)]
+      if (usedPhrases.value.size === allPhrases.length) {
+        return null // No more phrases left
+      }
+      let phrase: string
+      do {
+        phrase = allPhrases[Math.floor(Math.random() * allPhrases.length)]
+      } while (usedPhrases.value.has(phrase))
+      usedPhrases.value.add(phrase)
+      return phrase
     }
 
     const vote = (type: 'taylorSwiftSong' | 'bathAndBodyWorksScent') => {
@@ -54,11 +64,19 @@ export default defineComponent({
 
     currentPhrase.value = getRandomPhrase()
 
+    const restartGame = () => {
+      score.$reset()
+      usedPhrases.value.clear()
+      result.value = null
+      currentPhrase.value = getRandomPhrase()
+    }
+
     return {
       currentPhrase,
       vote,
       result,
       score,
+      restartGame,
     }
   },
 })
@@ -109,5 +127,9 @@ button {
 button:hover {
   background-color: var(--vt-c-light-purple);
   color: var(--vt-c-light-peach);
+}
+
+button.restart:hover {
+  background-color: var(--vt-c-light-blue);
 }
 </style>

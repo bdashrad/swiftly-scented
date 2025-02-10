@@ -10,7 +10,7 @@ import { RouterLink, RouterView } from 'vue-router'
       <h1>Taylor Scents</h1>
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/game">Play</RouterLink>
+        <RouterLink to="/game">Game</RouterLink>
         <RouterLink to="/about">About</RouterLink>
       </nav>
     </div>
