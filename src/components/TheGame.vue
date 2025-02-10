@@ -4,18 +4,19 @@
       Read each phrase and decide if it is the name of a Taylor Swift song or a Bath and Body Works
       scent.
     </p>
-    <div class="phrase-box">
+    <div class="phrase-box" v-if="gameOver === false">
       <h2>"{{ currentPhrase }}"</h2>
 
       <button @click="vote('taylorSwiftSong')">Song</button>
       <button @click="vote('bathAndBodyWorksScent')">Scent</button>
-
-      <p v-if="result !== null">{{ result }}</p>
     </div>
 
-    <div class="score-box">
+    <div class="score-box" v-if="result !== null">
+      <p>
+        {{ result }} You've guessed {{ score.countCorrect }} out of
+        {{ score.countAttempts }} correctly!
+      </p>
       <p>Score: {{ parseFloat(score.percentCorrect.toFixed(2)) }}%</p>
-      <p>You've guessed {{ score.countCorrect }} out of {{ score.countAttempts }} correctly!</p>
       <div v-if="result !== null"><button @click="restartGame" class="restart">Reset</button></div>
     </div>
   </div>
@@ -30,14 +31,17 @@ export default defineComponent({
   name: 'GameComponent',
   setup() {
     const allPhrases = [...phrases.taylorSwiftSongs, ...phrases.bathAndBodyWorksScents]
-    const currentPhrase = ref('')
+    const currentPhrase = ref<string>('')
     const usedPhrases = ref<Set<string>>(new Set())
     const result = ref<string | null>(null)
     const score = useScoreStore()
+    const gameOver = ref<boolean>(false)
 
     const getRandomPhrase = () => {
       if (usedPhrases.value.size === allPhrases.length) {
-        return null // No more phrases left
+        result.value = 'Game Over!'
+        gameOver.value = true
+        return '' // No more phrases left
       }
       let phrase: string
       do {
@@ -77,6 +81,7 @@ export default defineComponent({
       result,
       score,
       restartGame,
+      gameOver,
     }
   },
 })
