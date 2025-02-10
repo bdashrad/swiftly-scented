@@ -4,18 +4,20 @@
       Read each phrase and decide if it is the name of a Taylor Swift song or a Bath and Body Works
       scent.
     </p>
-    <div class="phrase-box">
+    <div class="phrase-box" v-if="gameOver === false">
       <h2>"{{ currentPhrase }}"</h2>
 
       <button @click="vote('taylorSwiftSong')">Song</button>
       <button @click="vote('bathAndBodyWorksScent')">Scent</button>
-
-      <p v-if="result !== null">{{ result }}</p>
     </div>
 
-    <div class="score-box">
+    <div class="score-box" v-if="result !== null">
+      <p>
+        {{ result }} You've guessed {{ score.countCorrect }} out of
+        {{ score.countAttempts }} correctly!
+      </p>
       <p>Score: {{ parseFloat(score.percentCorrect.toFixed(2)) }}%</p>
-      <p>You've guessed {{ score.countCorrect }} out of {{ score.countAttempts }} correctly!</p>
+      <div v-if="result !== null"><button @click="restartGame" class="restart">Reset</button></div>
     </div>
   </div>
 </template>
@@ -28,13 +30,25 @@ import { useScoreStore } from '../stores/score'
 export default defineComponent({
   name: 'GameComponent',
   setup() {
-    const currentPhrase = ref('')
+    const allPhrases = [...phrases.taylorSwiftSongs, ...phrases.bathAndBodyWorksScents]
+    const currentPhrase = ref<string>('')
+    const usedPhrases = ref<Set<string>>(new Set())
     const result = ref<string | null>(null)
     const score = useScoreStore()
+    const gameOver = ref<boolean>(false)
 
     const getRandomPhrase = () => {
-      const allPhrases = [...phrases.taylorSwiftSongs, ...phrases.bathAndBodyWorksScents]
-      return allPhrases[Math.floor(Math.random() * allPhrases.length)]
+      if (usedPhrases.value.size === allPhrases.length) {
+        result.value = 'Game Over!'
+        gameOver.value = true
+        return '' // No more phrases left
+      }
+      let phrase: string
+      do {
+        phrase = allPhrases[Math.floor(Math.random() * allPhrases.length)]
+      } while (usedPhrases.value.has(phrase))
+      usedPhrases.value.add(phrase)
+      return phrase
     }
 
     const vote = (type: 'taylorSwiftSong' | 'bathAndBodyWorksScent') => {
@@ -54,11 +68,20 @@ export default defineComponent({
 
     currentPhrase.value = getRandomPhrase()
 
+    const restartGame = () => {
+      score.$reset()
+      usedPhrases.value.clear()
+      result.value = null
+      currentPhrase.value = getRandomPhrase()
+    }
+
     return {
       currentPhrase,
       vote,
       result,
       score,
+      restartGame,
+      gameOver,
     }
   },
 })
@@ -109,5 +132,9 @@ button {
 button:hover {
   background-color: var(--vt-c-light-purple);
   color: var(--vt-c-light-peach);
+}
+
+button.restart:hover {
+  background-color: var(--vt-c-light-blue);
 }
 </style>
