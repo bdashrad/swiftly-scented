@@ -1,4 +1,4 @@
-# swiftly-scented
+# taylor-scents
 
 This project is a fun game that allows users to vote on whether a given phrase is the name of a Taylor Swift song or a Bath and Body Works scent.
 
@@ -32,8 +32,8 @@ This project is a fun game that allows users to vote on whether a given phrase i
 1. Clone the repository:
 
    ```sh
-   git clone <repository-url>
-   cd swift-and-bodyworks
+   git clone https://github.com/bdashrad/taylor-scents.git
+   cd taylor-scents
    ```
 
 2. Install dependencies:
